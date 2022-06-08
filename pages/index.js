@@ -7,18 +7,16 @@ import { useState } from 'react'
 
 export default function Home() {
 
-  const [location, setLocation] = useState("location")
-  const [minCustPerHour, setMin] = useState("")
-  const [maxCustPerHour, setMax] = useState("")
-  const [AvgCookiesPerSale, setAvgCookiesPerSale] = useState("")
+  const [cookieStands, setCookieStands] = useState("")
 
-  function handleLocationForm(event){
-    event.preventDefault()
-    setLocation(event.target.location.value)
-    setMin(event.target.minCustomer.value)
-    setMax(event.target.maxCustomer.value)
-    setAvgCookiesPerSale(event.target.avgCookiesPerSale.value)
-    event.target.reset()
+  function handleLocationForm(cookieStand){
+    setCookieStands([...cookieStands, cookieStand])
+    // event.preventDefault()
+    // setLocation(event.target.location.value)
+    // setMin(event.target.minCustomer.value)
+    // setMax(event.target.maxCustomer.value)
+    // setAvgCookiesPerSale(event.target.avgCookiesPerSale.value)
+    // event.target.reset()
   }
 
   return (
@@ -27,9 +25,11 @@ export default function Home() {
       <title>Cookie Stand Admin</title>
     </Head>
     <Header/>
-    <CreateForm/>
-    <ReportTable/>
-    <Footer/>
+    <main className='flex flex-col items-center justify-center'>
+      <CreateForm onSubmit={handleLocationForm}/>
+      <ReportTable/>
+      <Footer cookieStandCount={cookieStands.length}/>
+    </main>
     </>
     // <>
     // <Head>

@@ -1,6 +1,19 @@
-export default function CreateForm() {
+export default function CreateForm(props) {
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    let cookieStand = {
+      location: event.target.location.value,
+      minCustomer: event.target.minCustomer.value,
+      maxCustomer: event.target.maxCustomer.value,
+      avgCookiesPerSale: event.target.avgCookiesPerSale.value,
+    }
+    props.onSubmit(cookieStand)
+    event.target.reset()
+  }
+
   return(
-    <form className='bg-green-300 p-6 flex flex-col items-center w-3/5 mt-6 rounded-md'>
+    <form onSubmit={handleSubmit} className='bg-green-300 p-6 flex flex-col items-center w-3/5 mt-6 rounded-md'>
        <h2 className='text-2xl'>Create Cookie Stand</h2>
        <div className='py-6 flex'>
          <label className='px-4' htmlFor="location">Location</label>

@@ -1,5 +1,5 @@
-export default function Footer() {
+export default function Footer(props) {
   return(
-    <p>Footer</p>
+    <p>{props.cookieStandCount}Footer</p>
   )
 }
