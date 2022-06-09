@@ -7,13 +7,14 @@ export default function CreateForm(props) {
       minCustomer: event.target.minCustomer.value,
       maxCustomer: event.target.maxCustomer.value,
       avgCookiesPerSale: event.target.avgCookiesPerSale.value,
+      hourlySales: [48, 42, 30, 24, 42, 24, 36, 42, 42, 48, 36, 42, 24, 36],
     }
     props.onSubmit(cookieStand)
     event.target.reset()
   }
 
   return(
-    <form onSubmit={handleSubmit} className='bg-green-300 p-6 flex flex-col items-center w-3/5 mt-6 rounded-md'>
+    <form onSubmit={handleSubmit} className='bg-green-300 p-6 flex flex-col items-center w-3/5 mt-6 mb-6 rounded-md'>
        <h2 className='text-2xl'>Create Cookie Stand</h2>
        <div className='py-6 flex'>
          <label className='px-4' htmlFor="location">Location</label>

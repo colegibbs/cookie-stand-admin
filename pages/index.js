@@ -25,9 +25,9 @@ export default function Home() {
       <title>Cookie Stand Admin</title>
     </Head>
     <Header/>
-    <main className='flex flex-col items-center justify-center'>
+    <main className='flex flex-col items-center justify-center space-y-4'>
       <CreateForm onSubmit={handleLocationForm}/>
-      <ReportTable/>
+      <ReportTable cookieStands={cookieStands}/>
       <Footer cookieStandCount={cookieStands.length}/>
     </main>
     </>
