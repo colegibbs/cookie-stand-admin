@@ -1,14 +1,21 @@
+import { useAuth } from '../contexts/auth'
+import useResource from '../hooks/useResource'
+
 export default function CreateForm(props) {
+
+  const { user } = useAuth()
+  const { createResource } = useResource()
 
   function handleSubmit(event) {
     event.preventDefault()
     let cookieStand = {
       location: event.target.location.value,
-      minCustomer: event.target.minCustomer.value,
-      maxCustomer: event.target.maxCustomer.value,
-      avgCookiesPerSale: event.target.avgCookiesPerSale.value,
-      hourlySales: [48, 42, 30, 24, 42, 24, 36, 42, 42, 48, 36, 42, 24, 36],
+      owner: user.id,
+      minimum_customers_per_hour: event.target.minCustomer.value,
+      maximum_customers_per_hour: event.target.maxCustomer.value,
+      average_cookies_per_sale: event.target.avgCookiesPerSale.value,
     }
+    createResource(cookieStand)
     props.onSubmit(cookieStand)
     event.target.reset()
   }
