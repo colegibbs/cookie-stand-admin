@@ -17,24 +17,26 @@ export default function ReportTable(props) {
                 {hour}
               </th>
             ))}
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           {props.cookieStands.map(stand => (
             <tr key={stand.location}>
               <td className="border border-black">{stand.location}</td>
-              {stand.hourlySales.map(sale => (
+              {stand.hourly_sales.map(sale => (
               <td key={sale}>
                 {sale}
               </td>
               ))}
+              <td>{stand.hourly_sales.reduce((previous, current) => previous + current, 0)}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
           <tr>
             <th>Total</th>
-            {props.cookieStands[0].hourlySales.map(sale => (
+            {props.cookieStands[0].hourly_sales.map(sale => (
               <td key={sale}>{sale * props.cookieStands.length}</td>
             ))}
           </tr>
